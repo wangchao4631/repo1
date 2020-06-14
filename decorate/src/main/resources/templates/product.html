@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="http://211.159.164.236/css/normalize.css"/>
+		<link rel="stylesheet" type="text/css" href="http://211.159.164.236/css/animate.min.css"/>
+		<link href="http://211.159.164.236/css/owl.carousel.css" rel="stylesheet">
+		<link href="http://211.159.164.236/css/owl.theme.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1470031228_4077797.css"/>
+		<link rel="stylesheet" type="text/css" href="http://211.159.164.236/css/main.css"/>
+	</head>
+	<body>
+	<div th:include="head :: headname"></div>
+		<div class="ad clearfix wow pulse">
+			<div id="owl-demo" class="owl-carousel">
+				<div class="item">
+	                <picture>
+	                    <source srcset="http://211.159.164.236/img/abb.jpg" media="(min-width:50em)">
+	                    <source srcset="http://211.159.164.236/img/abb.jpg" media="(min-width:30em)">
+	                    <img src="http://211.159.164.236/img/abb.jpg" alt="">
+	                </picture>
+	                <div class="page-tit" th:text="${categories_name1}">产品中心</div>
+	            </div>
+			</div>
+		</div>
+		<div class="container clearfix">
+			<ul class="column-nav wow rubberBand">
+				<li th:each="titles:${titlepro}"><a th:href="@{'http://211.159.164.236/Product/'+${categories_name1}+'/'+${titles.categories_name}}" th:text="${titles.categories_name}">家具</a></li>
+
+				</ul>
+
+			<div class="product-box clearfix wow bounceInUp">
+				<figure  th:each="all:${allpro}">
+					<a th:href="@{'http://211.159.164.236/Productdetails/'+${all.ID}}" class="pic"><img th:src="@{'http://211.159.164.236/'+${all.img_src}}"/></a>
+					<figcaption><a th:href="@{'http://211.159.164.236/Productdetails/'+${all.ID}}" th:text="${all.Product_details_name}">春光无限好 田园风卫浴玩出不同花样</a></figcaption>
+				</figure>
+
+				<div class="clearfix"></div>
+				<div class="page-ajax wow bounceIn"  data-wow-delay=".3s">
+					<a th:href="@{'http://211.159.164.236/Product/'+${categories_name1}}"><i></i>到底了查看该栏目下所有所有</button>
+				</div>
+			</div>
+		</div>
+	<div th:include="foot :: footername"></div>
+	<script src="http://211.159.164.236/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://211.159.164.236/js/owl.carousel.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://211.159.164.236/js/jquery.sidr.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://211.159.164.236/js/picturefill.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://211.159.164.236/js/main.js" type="text/javascript" charset="utf-8"></script>
+	<script src="//cdn.bootcss.com/wow/1.1.2/wow.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		new WOW().init();
+	};
+	</script>
+	</body>
+</html>

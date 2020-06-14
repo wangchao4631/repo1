@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../css/normalize.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/animate.min.css"/>
+		<link href="../css/owl.carousel.css" rel="stylesheet">
+		<link href="../css/owl.theme.css" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="//at.alicdn.com/t/font_1470031228_4077797.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+
+	</head>
+	<body>
+	<div th:include="head :: headname"></div>
+	<div class="ad clearfix wow pulse">
+			<div id="owl-demo" class="owl-carousel">
+				<div class="item">
+	                <picture>
+	                    <source srcset="../img/abb.jpg" media="(min-width:50em)">
+	                    <source srcset="../img/abb.jpg" media="(min-width:30em)">
+	                    <img src="../img/abb.jpg" alt="">
+	                </picture>
+	                <div class="page-tit" th:text="${Productdetails.Product_details_name}">详情展示</div>
+	            </div>
+
+
+			</div>
+		</div>
+		<ul class="column-nav wow rubberBand">
+			<li class="active" th:text="${Productdetails.Product_details_name}">产品名字</li>
+		</ul>
+
+
+		<!--<div class="product-cqbox" >-->
+			<!--<div class="container clearfix">-->
+				<!--<div class="cpxq-img wow bounceInLeft">-->
+					<!--<div id="owl-demo3" class="owl-carousel">-->
+						<!--<div class="item" >-->
+		                	<!--<img th:src="@{'../'+${Productdetails.img_src}}"/>-->
+			            <!--</div>-->
+					<!--</div>-->
+				<!--</div>-->
+
+
+			<!--</div>-->
+		<!--</div>-->
+    <div class="container product-container clearfix">
+        <div class="pull-left product-content-body wow bounceInLeft">
+            <h3 class="product-title">详细信息</h3>
+            <div class="product-txt">
+                <p th:text="${Productdetails.Product_details_name}"></p>
+                <img th:src="@{'http://211.159.164.236/'+${Productdetails.img_src}}">
+                <a th:href="@{'http://211.159.164.236/Productdetails/'+${shangyipian.ID}}"  th:unless="${shangyipian eq null}"> <p th:text="上一篇+':' +${shangyipian.Product_details_name}"> </p></a><br>
+                <a th:href="@{'http://211.159.164.236/Productdetails/'+${xiayipian.ID}}" th:unless="${xiayipian eq null}"> <p th:text="下一篇 +':'+${xiayipian.Product_details_name}"></p></a>
+
+
+            </div>
+        </div>
+        <div class="pull-right product-hot wow bounceInRight">
+            <h3 class="product-title">热门推荐</h3>
+            <ul class="hot-list clearfix">
+                <li th:each="all:${tuijian}">
+                    <a  th:href="@{'http://211.159.164.236/Productdetails/'+${all.ID}}"><img th:src="@{'http://211.159.164.236/'+${all.img_src}}"/></a>
+                    <p th:text="${all.Product_details_name}"><a th:href="@{'http://211.159.164.236/Productdetails/'+${all.ID}}"></a></p>
+                </li>
+
+            </ul>
+
+
+        </div>
+    </div>
+
+	<div th:include="foot :: footername"></div>
+	<script src="http://211.159.164.236/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://211.159.164.236/js/owl.carousel.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://211.159.164.236/js/jquery.sidr.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://211.159.164.236/js/picturefill.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="http://211.159.164.236/js/main.js" type="text/javascript" charset="utf-8"></script>
+	<script src="//cdn.bootcss.com/wow/1.1.2/wow.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+	if (!(/msie [6|7|8|9]/i.test(navigator.userAgent))){
+		new WOW().init();
+	};
+	</script>
+
+	</body>
+</html>
